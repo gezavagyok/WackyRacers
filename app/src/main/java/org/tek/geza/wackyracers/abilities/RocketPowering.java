@@ -1,6 +1,7 @@
 package org.tek.geza.wackyracers.abilities;
 
 import org.tek.geza.wackyracers.Effect;
+import org.tek.geza.wackyracers.engine.decorator.AccelerationDecorator;
 
 import javax.inject.Inject;
 
@@ -13,22 +14,19 @@ import rx.Subscriber;
 
 public class RocketPowering extends CooldownAbility {
 
+    AccelerationDecorator decorator;
+
     @Inject
-    public RocketPowering() {
+    public RocketPowering(AccelerationDecorator decorator) {
         super(120.0);
+        this.decorator = decorator;
     }
 
     @Override
     public Observable<Effect> execute() {
         return Observable.create(subscriber -> {
             if(isAbilityReady()) {
-                Effect rocketEffect = new Effect(100.0, // +100% acceleration
-                        0, // no damage has been done
-                        -50.0, // with great power comes great consumption...
-                        200, // only accerlates
-                        100, // + 100 max speed
-                        4 // for 4 seconds
-                );
+                Effect rocketEffect = new Effect(decorator);
                 rocketEffect.setName("Rocket Powered");
                 subscriber.onStart();
                 subscriber.onNext(rocketEffect);
