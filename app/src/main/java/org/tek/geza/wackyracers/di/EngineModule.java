@@ -1,6 +1,7 @@
 package org.tek.geza.wackyracers.di;
 
 import org.tek.geza.wackyracers.engine.TopCarEngine;
+import org.tek.geza.wackyracers.engine.WeakCarEngine;
 
 import dagger.Module;
 import dagger.Provides;
@@ -14,5 +15,10 @@ public class EngineModule {
     @Provides
     TopCarEngine provideTopCarEngine(){
         return new TopCarEngine(0,8.5,100,0,100);
+    }
+
+    @Provides
+    WeakCarEngine provideWeakCarEngine() {
+        return new WeakCarEngine(0, 5.0, 100, 0, 60);
     }
 }

@@ -31,4 +31,9 @@ public abstract class CarEngine implements Engine {
     public void setMaxSpeed(double maxSpeed) {
         this.maxSpeed = maxSpeed;
     }
+
+    // upgrades to a better engine
+    public void upgrade() {
+        // todo...
+    }
 }

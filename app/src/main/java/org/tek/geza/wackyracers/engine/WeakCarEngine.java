@@ -3,29 +3,38 @@ package org.tek.geza.wackyracers.engine;
 /**
  * Created by geza on 2016.08.17..
  */
-public class WeakCarEngine implements Engine {
+public class WeakCarEngine extends CarEngine {
+
+    public WeakCarEngine(double velocity, double acceleration, double fuelLeft, double damage/*haha*/, double maxSpeed) {
+        setVelocity(velocity);
+        setAcceleration(acceleration);
+        setFuelLeft(fuelLeft);
+        setDamage(damage);
+        setMaxSpeed(maxSpeed);
+    }
+
     @Override
     public double getVelocity() {
-        return 0;
+        return velocity;
     }
 
     @Override
     public double getAcceleration() {
-        return 0;
+        return acceleration;
     }
 
     @Override
     public double getFuelLeft() {
-        return 0;
+        return fuelLeft;
     }
 
     @Override
     public double getDamage() {
-        return 0;
+        return damage;
     }
 
     @Override
     public double getMaxSpeed() {
-        return 0;
+        return maxSpeed;
     }
 }
