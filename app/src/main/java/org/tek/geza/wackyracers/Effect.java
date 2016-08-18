@@ -1,15 +1,7 @@
 package org.tek.geza.wackyracers;
 
-import android.util.Log;
-
 import org.tek.geza.wackyracers.engine.decorator.EngineDecorator;
 import org.tek.geza.wackyracers.racers.RaceCar;
-
-import java.util.concurrent.TimeUnit;
-
-import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by geza on 2016.08.17..
@@ -17,12 +9,20 @@ import rx.schedulers.Schedulers;
 
 public class Effect {
     private static final String TAG = "RACE";
-    protected String name;
-
+    static Effect errorEffect;
     final EngineDecorator decorator;
+    protected String name;
 
     public Effect(EngineDecorator decorator) {
         this.decorator = decorator;
+    }
+
+    public static Effect error() {
+        if (errorEffect == null) {
+            errorEffect = new Effect(null);
+            errorEffect.setName("ERROR");
+        }
+        return errorEffect;
     }
 
     public void apply(RaceCar raceCar){

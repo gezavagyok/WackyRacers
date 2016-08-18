@@ -5,18 +5,27 @@ package org.tek.geza.wackyracers.abilities;
  */
 
 public abstract class CooldownAbility implements SpecialAbility {
-    protected final double cooldown;
-    protected double cooldownLasts;
+    protected final long cooldown; // milliseconds
+    protected long timeLeft;
+    protected boolean isReady = true;
 
-    public CooldownAbility(double cooldown) {
+    public CooldownAbility(long cooldown) {
         this.cooldown = cooldown;
     }
 
     public boolean isAbilityReady(){
-        return true; // todo
+        return isReady;
     }
 
-    public double timeLeft(){
-        return 0.0; // todo
+    public void setReady(boolean ready) {
+        isReady = ready;
+    }
+
+    public long getCooldown() {
+        return timeLeft;
+    }
+
+    public void setTimeLeft(long timeLeft) {
+        this.timeLeft = timeLeft;
     }
 }

@@ -19,12 +19,12 @@ public abstract class EngineDecorator implements Engine {
 
     private Engine engine;
     private long duration; // ms
-    private boolean isDetached;
+    private boolean detached;
 
     public EngineDecorator(Engine engine, long duration) {
         this.engine = engine;
         this.duration = duration;
-        isDetached = true;
+        detached = true;
     }
 
     @Override
@@ -53,14 +53,18 @@ public abstract class EngineDecorator implements Engine {
     }
 
     public final void onAttach(){
-        isDetached = false;
+        detached = false;
         // timer starts:
         Log.i(TAG, "timer starts");
         Observable.interval(0,duration, TimeUnit.MILLISECONDS, Schedulers.io())
                 .skip(1)
                 .first()
-                .doOnNext(aLong -> isDetached = true)
+                .doOnNext(aLong -> detached = true)
                 .doOnCompleted(()-> Log.i(TAG, "decorator finished adjusting back to normal mode"))
                 .subscribe();
+    }
+
+    public boolean isDetached() {
+        return detached;
     }
 }

@@ -21,11 +21,21 @@ public class AccelerationDecorator extends EngineDecorator {
 
     @Override
     public double getAcceleration() {
-        return super.getAcceleration() * percent;
+        if (!isDetached()) {
+            return super.getAcceleration() * percent;
+        } else {
+            return super.getAcceleration();
+        }
+
     }
 
     @Override
     public double getMaxSpeed() {
-        return super.getMaxSpeed() + flatSpeedIncrease;
+        if (!isDetached()) {
+            return super.getMaxSpeed() + flatSpeedIncrease;
+        } else {
+            return super.getMaxSpeed();
+        }
+
     }
 }

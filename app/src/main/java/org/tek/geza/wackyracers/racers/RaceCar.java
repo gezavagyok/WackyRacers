@@ -6,8 +6,8 @@ import org.tek.geza.wackyracers.Effect;
 import org.tek.geza.wackyracers.abilities.SpecialAbility;
 import org.tek.geza.wackyracers.engine.Engine;
 
+import rx.Observable;
 import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
@@ -22,43 +22,41 @@ public abstract class RaceCar {
     SpecialAbility ability;
     Engine engine;
     RaceCar target;
+    Subscription subscription;
 
     public RaceCar(Engine engine) {
         this.engine = engine;
     }
 
-    Subscription subscription;
-
-    public void useAbility(){
-        subscription = ability.execute()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+    public Observable<Effect> useAbility() {
+        return ability.execute()
+                .subscribeOn(Schedulers.io()) // subscribe on, observe on should go to view
                 .doOnNext(target::react)
-                .doOnCompleted(() -> Log.i(TAG, ability.getName() + " has been used on "+target.getName()+" !"))
-                .doOnError(this::handleError)
-                .subscribe();
+                .doOnCompleted(() -> Log.i(TAG, ability.getName() + " has been used on " + target.getName() + " !"));
     }
 
-    public void react(Effect effect){
+    public void react(Effect effect) {
+        if (Effect.error().equals(effect)) {
+            return;
+        }
+
         effect.apply(this);
-        Log.i(TAG, "applying effect: " +effect.toString() );
+        Log.i(TAG, "applying effect: " + effect.toString());
     }
 
-    void handleError(Throwable throwable){
-        Log.d("RACE","ERROR: " + throwable.getMessage());
+    void handleError(Throwable throwable) {
+        Log.d("RACE", "ERROR: " + throwable.getMessage());
     }
 
-    public void destroy(){
-        if(!subscription.isUnsubscribed()){
+    public void destroy() {
+        if (!subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
     }
 
 
     /**
-     *
      * getters and setters below
-     *
      */
 
     public RaceCar getTarget() {
