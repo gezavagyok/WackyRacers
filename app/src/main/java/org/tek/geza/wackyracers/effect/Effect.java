@@ -1,5 +1,7 @@
 package org.tek.geza.wackyracers.effect;
 
+import android.support.annotation.NonNull;
+
 import org.tek.geza.wackyracers.racers.RaceCar;
 
 /**
@@ -26,7 +28,7 @@ public abstract class Effect {
         return name;
     }
 
-    public abstract void apply(RaceCar raceCar);
+    public abstract void apply(@NonNull RaceCar raceCar);
 
     @Override
     public String toString() {
