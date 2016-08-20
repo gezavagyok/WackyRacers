@@ -10,4 +10,7 @@ public interface Engine {
     double getFuelLeft();
     double getDamage();
     double getMaxSpeed();
+
+    void repair();
+
 }

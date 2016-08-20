@@ -32,6 +32,11 @@ public abstract class CarEngine implements Engine {
         this.maxSpeed = maxSpeed;
     }
 
+    @Override
+    public void repair() {
+        damage = 0;
+    }
+
     // upgrades to a better engine
     public void upgrade() {
         // todo...

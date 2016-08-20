@@ -67,4 +67,9 @@ public abstract class EngineDecorator implements Engine {
     public boolean isDetached() {
         return detached;
     }
+
+    @Override
+    public void repair() {
+        engine.repair();
+    }
 }

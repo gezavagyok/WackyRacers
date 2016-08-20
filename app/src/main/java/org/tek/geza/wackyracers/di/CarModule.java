@@ -1,7 +1,7 @@
 package org.tek.geza.wackyracers.di;
 
-import org.tek.geza.wackyracers.abilities.ReconstructCar;
-import org.tek.geza.wackyracers.abilities.RocketPowering;
+import org.tek.geza.wackyracers.abilities.concrete_abilities.ReconstructCar;
+import org.tek.geza.wackyracers.abilities.concrete_abilities.RocketPowering;
 import org.tek.geza.wackyracers.engine.TopCarEngine;
 import org.tek.geza.wackyracers.engine.WeakCarEngine;
 import org.tek.geza.wackyracers.racers.BoulderMobile;

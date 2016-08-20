@@ -7,6 +7,7 @@ import android.widget.TextView;
 import org.tek.geza.wackyracers.di.CarComponent;
 import org.tek.geza.wackyracers.di.CarModule;
 import org.tek.geza.wackyracers.di.DaggerCarComponent;
+import org.tek.geza.wackyracers.effect.Effect;
 import org.tek.geza.wackyracers.racers.TheDoubleZero;
 
 import javax.inject.Inject;

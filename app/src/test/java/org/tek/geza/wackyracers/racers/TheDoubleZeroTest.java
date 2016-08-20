@@ -2,8 +2,9 @@ package org.tek.geza.wackyracers.racers;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.tek.geza.wackyracers.Effect;
-import org.tek.geza.wackyracers.abilities.RocketPowering;
+import org.tek.geza.wackyracers.abilities.concrete_abilities.RocketPowering;
+import org.tek.geza.wackyracers.effect.Effect;
+import org.tek.geza.wackyracers.effect.RocketEffect;
 import org.tek.geza.wackyracers.engine.CarEngine;
 import org.tek.geza.wackyracers.engine.TopCarEngine;
 import org.tek.geza.wackyracers.engine.decorator.AccelerationDecorator;
@@ -25,7 +26,8 @@ public class TheDoubleZeroTest {
     @Before
     public void setUp() throws Exception {
         CarEngine engine = new TopCarEngine(0, 8.5, 100, 0, 100);
-        RocketPowering ability = new RocketPowering(new AccelerationDecorator(engine, 3000, 100));
+        RocketEffect effect = new RocketEffect(engine, new AccelerationDecorator(engine, 3000, 100));
+        RocketPowering ability = new RocketPowering(effect);
         theDoubleZero = new TheDoubleZero(engine, ability);
     }
 
@@ -74,7 +76,7 @@ public class TheDoubleZeroTest {
         // cooldown refreshed!
         System.out.println("cooldown should be refreshed");
         Observable.interval(0, 1, TimeUnit.SECONDS)
-                .take((int) (RocketPowering.COOLDOWN + 2))
+                .take((int) (RocketPowering.ABILITY_COOLDOWN / 1000 + 2))
                 .doOnCompleted(() -> theDoubleZero.useAbility()
                         .doOnCompleted(() -> System.out.println("ability has been used second time."))
                         .onErrorReturn(throwable -> {

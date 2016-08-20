@@ -2,8 +2,8 @@ package org.tek.geza.wackyracers.racers;
 
 import android.util.Log;
 
-import org.tek.geza.wackyracers.Effect;
 import org.tek.geza.wackyracers.abilities.SpecialAbility;
+import org.tek.geza.wackyracers.effect.Effect;
 import org.tek.geza.wackyracers.engine.Engine;
 
 import rx.Observable;

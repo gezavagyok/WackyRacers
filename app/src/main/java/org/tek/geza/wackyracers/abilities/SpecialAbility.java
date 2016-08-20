@@ -1,6 +1,6 @@
 package org.tek.geza.wackyracers.abilities;
 
-import org.tek.geza.wackyracers.Effect;
+import org.tek.geza.wackyracers.effect.Effect;
 
 import rx.Observable;
 

@@ -28,4 +28,9 @@ public class AverageCarEngine implements Engine {
     public double getMaxSpeed() {
         return 0;
     }
+
+    @Override
+    public void repair() {
+
+    }
 }
