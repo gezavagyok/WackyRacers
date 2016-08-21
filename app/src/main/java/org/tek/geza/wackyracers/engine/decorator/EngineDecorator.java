@@ -17,7 +17,7 @@ public abstract class EngineDecorator implements Engine {
 
     private static final String TAG = "RACE";
 
-    private Engine engine;
+    protected Engine engine;
     private long duration; // ms
     private boolean detached;
 

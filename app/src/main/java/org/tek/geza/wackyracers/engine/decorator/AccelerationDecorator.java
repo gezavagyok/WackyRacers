@@ -22,7 +22,7 @@ public class AccelerationDecorator extends EngineDecorator {
     @Override
     public double getAcceleration() {
         if (!isDetached()) {
-            return super.getAcceleration() * percent;
+            return super.getAcceleration() * (1 + (percent / 100));
         } else {
             return super.getAcceleration();
         }

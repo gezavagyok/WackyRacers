@@ -1,6 +1,5 @@
 package org.tek.geza.wackyracers.effect;
 
-import org.tek.geza.wackyracers.engine.Engine;
 import org.tek.geza.wackyracers.engine.decorator.AccelerationDecorator;
 
 /**
@@ -9,7 +8,7 @@ import org.tek.geza.wackyracers.engine.decorator.AccelerationDecorator;
 
 public class RocketEffect extends TempEffect {
 
-    public RocketEffect(Engine engine, AccelerationDecorator decorator) {
+    public RocketEffect(AccelerationDecorator decorator) {
         super("Rocket effect", decorator);
     }
 }

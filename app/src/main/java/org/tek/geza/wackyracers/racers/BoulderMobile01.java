@@ -15,9 +15,9 @@ import org.tek.geza.wackyracers.engine.Engine;
  * They will sometimes directly attack other drivers with their
  * clubs or by launching rocks at them.
  */
-public class BoulderMobile extends RaceCar {
+public class BoulderMobile01 extends RaceCar {
 
-    public BoulderMobile(Engine engine, SpecialAbility specialAbility) {
+    public BoulderMobile01(Engine engine, SpecialAbility specialAbility) {
         super(engine);
         name = "Boulder Mobile";
         drivers = new String[]{"Rock Slag", "Gravel Slag"};

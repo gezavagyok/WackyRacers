@@ -8,7 +8,9 @@ import org.tek.geza.wackyracers.di.CarComponent;
 import org.tek.geza.wackyracers.di.CarModule;
 import org.tek.geza.wackyracers.di.DaggerCarComponent;
 import org.tek.geza.wackyracers.effect.Effect;
-import org.tek.geza.wackyracers.racers.TheDoubleZero;
+import org.tek.geza.wackyracers.racers.BoulderMobile01;
+import org.tek.geza.wackyracers.racers.CreepyCoupe02;
+import org.tek.geza.wackyracers.racers.TheMeanMachine00;
 
 import javax.inject.Inject;
 
@@ -21,14 +23,20 @@ import rx.schedulers.Schedulers;
 public class MainActivity extends AppCompatActivity {
 
     @Inject
-    TheDoubleZero theDoubleZero;
+    TheMeanMachine00 theMeanMachine00;
+
+    @Inject
+    BoulderMobile01 boulderMobile01;
+
+    @Inject
+    CreepyCoupe02 creepyCoupe02;
 
     @BindView(R.id.display)
     TextView display;
 
     @OnClick(R.id.testButton)
     public void onAbilityButtonClicked() {
-        theDoubleZero.useAbility()
+        theMeanMachine00.useAbility()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnCompleted(() -> display.setText("used"))

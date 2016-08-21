@@ -1,5 +1,6 @@
 package org.tek.geza.wackyracers.di;
 
+import org.tek.geza.wackyracers.engine.AverageCarEngine;
 import org.tek.geza.wackyracers.engine.TopCarEngine;
 import org.tek.geza.wackyracers.engine.WeakCarEngine;
 
@@ -20,5 +21,10 @@ public class EngineModule {
     @Provides
     WeakCarEngine provideWeakCarEngine() {
         return new WeakCarEngine(0, 5.0, 100, 0, 60);
+    }
+
+    @Provides
+    AverageCarEngine provideAverageCarEngine() {
+        return new AverageCarEngine(0, 7.0, 100, 0, 60);
     }
 }

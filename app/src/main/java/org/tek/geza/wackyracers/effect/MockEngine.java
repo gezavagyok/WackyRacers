@@ -10,27 +10,27 @@ public class MockEngine implements Engine {
 
     @Override
     public double getVelocity() {
-        return 0;
+        return 10;
     }
 
     @Override
     public double getAcceleration() {
-        return 0;
+        return 10;
     }
 
     @Override
     public double getFuelLeft() {
-        return 0;
+        return 20;
     }
 
     @Override
     public double getDamage() {
-        return 0;
+        return 30;
     }
 
     @Override
     public double getMaxSpeed() {
-        return 0;
+        return 50;
     }
 
     @Override

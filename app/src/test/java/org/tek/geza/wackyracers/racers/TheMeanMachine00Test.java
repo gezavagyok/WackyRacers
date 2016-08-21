@@ -19,21 +19,21 @@ import static org.junit.Assert.assertNotNull;
 /**
  * Created by geza on 2016.08.18..
  */
-public class TheDoubleZeroTest {
+public class TheMeanMachine00Test {
 
-    TheDoubleZero theDoubleZero;
+    TheMeanMachine00 theMeanMachine00;
 
     @Before
     public void setUp() throws Exception {
         CarEngine engine = new TopCarEngine(0, 8.5, 100, 0, 100);
-        RocketEffect effect = new RocketEffect(engine, new AccelerationDecorator(engine, 3000, 100));
+        RocketEffect effect = new RocketEffect(new AccelerationDecorator(engine, 3000, 100));
         RocketPowering ability = new RocketPowering(effect);
-        theDoubleZero = new TheDoubleZero(engine, ability);
+        theMeanMachine00 = new TheMeanMachine00(engine, ability);
     }
 
     @Test
     public void testCooldown() {
-        theDoubleZero.useAbility()
+        theMeanMachine00.useAbility()
                 .doOnCompleted(() -> System.out.println("ability has been used first time."))
                 // this should not happen! always fail in this case!
                 .onErrorReturn(throwable -> {
@@ -47,7 +47,7 @@ public class TheDoubleZeroTest {
         System.out.println("cooldown will not be ready yet");
         Observable.interval(0, 1, TimeUnit.SECONDS)
                 .take(2)
-                .doOnCompleted(() -> theDoubleZero.useAbility()
+                .doOnCompleted(() -> theMeanMachine00.useAbility()
                         .doOnCompleted(() -> System.out.println("ability has been used second time."))
                         .onErrorReturn(throwable -> {
                             assertNotNull(throwable.getMessage());
@@ -63,7 +63,7 @@ public class TheDoubleZeroTest {
 
     @Test
     public void cooldownRefreshedTest() {
-        theDoubleZero.useAbility()
+        theMeanMachine00.useAbility()
                 .doOnCompleted(() -> System.out.println("ability has been used first time."))
                 // this should not happen! always fail in this case!
                 .onErrorReturn(throwable -> {
@@ -77,7 +77,7 @@ public class TheDoubleZeroTest {
         System.out.println("cooldown should be refreshed");
         Observable.interval(0, 1, TimeUnit.SECONDS)
                 .take((int) (RocketPowering.ABILITY_COOLDOWN / 1000 + 2))
-                .doOnCompleted(() -> theDoubleZero.useAbility()
+                .doOnCompleted(() -> theMeanMachine00.useAbility()
                         .doOnCompleted(() -> System.out.println("ability has been used second time."))
                         .onErrorReturn(throwable -> {
                             assertNotNull(throwable.getMessage());

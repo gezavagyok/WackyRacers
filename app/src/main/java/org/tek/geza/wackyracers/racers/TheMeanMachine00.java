@@ -17,9 +17,9 @@ import org.tek.geza.wackyracers.engine.Engine;
  *
  * @source https://en.wikipedia.org/wiki/Wacky_Races
  */
-public class TheDoubleZero extends RaceCar {
+public class TheMeanMachine00 extends RaceCar {
 
-    public TheDoubleZero(Engine carEngine, SpecialAbility rocketPowering) {
+    public TheMeanMachine00(Engine carEngine, SpecialAbility rocketPowering) {
         super(carEngine);
         name = "The Double Zero";
         drivers = new String[]{"Dick Dastardly", "Muttley"};
